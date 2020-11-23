@@ -1,0 +1,26 @@
+<div class="players">
+    <div class="player" [ngClass]="{'player-x': playerTurn == 'X'}">X's Turn</div>
+    <div class="player" [ngClass]="{'player-o': playerTurn == 'O'}">O's Turn</div>
+</div>
+
+<div class="block-container">
+    <div class="block" *ngFor="let block of [1,2,3], let blockIndex=index">
+        <div class="cell" *ngFor="let cell of [1,2,3], let cellIndex=index">
+            <button [class]="'cell-input cell-input--'+(cellIndex+(blockIndex*3))"
+                (click)="handlePlayerInput(cellIndex+(blockIndex*3))"
+                [disabled]="blocks[cellIndex+(blockIndex*3)]">
+                <span
+                    [ngStyle]="{'color': blocks[cellIndex+(blockIndex*3)] == 'X' ? '#ff1800' : '#0089ff'}">{{blocks[cellIndex+(blockIndex*3)]}}</span></button>
+        </div>
+    </div>
+</div>
+
+<div class="winner" *ngIf="gameCompleted">
+    <p *ngIf="winner==='X' || winner==='O'"><span
+            [ngStyle]="{'color': winner == 'X' ? '#ff1800' : '#0089ff'}">{{winner}} </span>has won</p>
+    <p *ngIf="winner==='Tied'">Game Tied</p>
+</div>
+
+<div class="btn-container">
+    <button class="btn btn-reset" (click)="newGame()">Restart Game</button>
+</div>
