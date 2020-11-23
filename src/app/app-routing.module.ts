@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: 'play',
     component: PlayGroundComponent
+  },
+  {
+    path: '',
+    component: PlayGroundComponent
   }
 ];
 
