@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <style>
+      .field {
+        height: 50px;
+        width: 50px;
+        font-size: 45px;
+        text-align: center;
+        padding: 10px;
+        margin: 2px 0;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+		<div>
+			<input class="field" type="text" id="0" onclick="onPlayerSelect(id)" readonly>
+			<input class="field" type="text" id="1" onclick="onPlayerSelect(id)" readonly>
+			<input class="field" type="text" id="2" onclick="onPlayerSelect(id)" readonly>
+		</div>
+		<div>
+			<input class="field" type="text" id="3" onclick="onPlayerSelect(id)" readonly>
+			<input class="field" type="text" id="4" onclick="onPlayerSelect(id)" readonly>
+			<input class="field" type="text" id="5" onclick="onPlayerSelect(id)" readonly>
+		</div>
+		<div>
+			<input class="field" type="text" id="6" onclick="onPlayerSelect(id)" readonly>
+			<input class="field" type="text" id="7" onclick="onPlayerSelect(id)" readonly>
+			<input class="field" type="text" id="8" onclick="onPlayerSelect(id)" readonly>
+		</div>
+		<h1 id="result"></h1>
+		<button id="reset" onclick="resetGame()">Reset Game</button>
+    <script>
+      let playerTurn = 'X';
+      let blocks = {};
+      let gameOver = false;
+
+      const onPlayerSelect = (id) => {
+        if(gameOver) return;
+        document.getElementById(id).value = playerTurn;
+        document.getElementById(id).disabled = true;
+        blocks[id]=playerTurn;
+        checkWinner();
+        playerTurn = playerTurn === 'X' ? 'O' : 'X';
+      }
+
+      const checkWinner = () => {
+        const winningConditions = [
+          [0,1,2],
+          [3,4,5],
+          [6,7,8],
+          [0,3,6],
+          [1,4,7],
+          [2,5,8],
+          [2,4,6],
+          [0,4,8]
+        ]
+        for(let win of winningConditions) {
+          let one = blocks[win[0]];
+          let two = blocks[win[1]];
+          let three = blocks[win[2]];
+          if(one !== undefined && one === two && two === three) {
+            document.getElementById("result").innerHTML = one + " has won!";
+            gameOver = true;
+          } else if (Object.keys(blocks).length === 9) {
+            document.getElementById("result").innerHTML = "Game tied!";
+            gameOver = true;
+          }
+        }
+      }
+
+      const resetGame = () => {
+        blocks = {};
+        this.gameOver = false;
+        this.playerTurn = 'X';
+        for (let i = 0; i < 9; i++) {
+          document.getElementById(i).value = '';
+          document.getElementById(i).disabled = false;
+        }
+      } 
+    </script>
+  </body>
+</html>
