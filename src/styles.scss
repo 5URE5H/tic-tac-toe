@@ -1,124 +1,159 @@
-@import url('https://fonts.cdnfonts.com/css/gemelli');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 *,
 *::after,
 *::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-    font-family: 'Gemelli', sans-serif;
-    font-weight: bold;
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
 }
 
 body {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .container {
-    text-align: center;
-    background-image: url('assets/images/bg-image.jpg');
-    width: 40%;
-    background-size: cover;
-    margin: auto;
-    height: 100vh;
+  text-align: center;
+  width: 40%;
+  background-size: cover;
+  padding: 5rem;
+  margin: auto;
+  height: 100vh;
 }
 
-@media (max-width: 900px) { 
-    .container {
-        width: 100%;
-    }
+@media (max-width: 900px) {
+  .container {
+    width: 100%;
+  }
 }
 
 .play-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px;
 }
 
 .block {
-    display: flex;
+  display: flex;
 }
 
 .players {
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 50px;
 }
 
 .winner {
-    margin-top: 50px;
-    font-size: 3rem;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
 }
 
 .btn {
-    padding: 10px 15px;
-    font-size: 1.5rem;
-    border: none;
-    border-radius: 4px;
-    outline: none;
-    transition: all .2s;
-    cursor: pointer;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  transition: all 0.2s;
+  cursor: pointer;
 
-    &-reset {
-        color: white;
-        background: rgb(25, 122, 25);
-    }
+  &-reset {
+    color: white;
+    background: #197a19;
+  }
 
-    &:hover {
-        box-shadow: 0px 5px 1px #282828;
-        transform: translateY(-3px);
-    }
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    transform: translateY(-3px);
+  }
 
-    &:active {
-        box-shadow: 0px 1px 1px #282828;
-        transform: translateY(-1px);
-    }
+  &:active {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    transform: translateY(-1px);
+  }
 
-    &-container {
-        margin: 50px 0px;
-    }
+  &-container {
+    margin: 50px 0px;
+  }
 }
 
 .player {
-    font-size: 1.5rem;
-    color: rgb(197, 197, 197);
+  font-size: 2rem;
+  color: #c5c5c5;
 
-    &-x {
-        color: #ff1800;
-        border-bottom: 3px solid;
-    }
-    
-    &-o {
-        color: #0089ff;
-        border-bottom: 3px solid;
-    }
+  &-x {
+    color: #ff1800;
+    border-bottom: 2px solid;
+  }
+
+  &-o {
+    color: #0089ff;
+    border-bottom: 2px solid;
+  }
 }
 
 .cell-input {
-    // margin: 5px;
-    padding: 5px;
-    height: 7rem;
-    width: 7rem;
-    font-size: 3.5rem;
-    border: 3px solid black;
-    outline: none;
-    background: #fff0;
+  padding: 5px;
+  height: 7rem;
+  width: 7rem;
+  font-size: 3.5rem;
+  border: 2px solid #444444;
+  outline: none;
+  background: #fff0;
 
-    &--0, &--1, &--2 {
-        border-top: none;
-    }
+  &--0,
+  &--1,
+  &--2 {
+    border-top: none;
+  }
 
-    &--2, &--5, &--8 {
-        border-right: none;
-    }
+  &--2,
+  &--5,
+  &--8 {
+    border-right: none;
+  }
 
-    &--6, &--7, &--8 {
-        border-bottom: none;
-    }
+  &--6,
+  &--7,
+  &--8 {
+    border-bottom: none;
+  }
 
-    &--0, &--3, &--6 {
-        border-left: none;
-    }
+  &--0,
+  &--3,
+  &--6 {
+    border-left: none;
+  }
 }
 
+.turn-X {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffbeb7;
+  cursor: pointer;
+
+  &:hover::before {
+    content: "X";
+    position: absolute;
+  }
+}
+
+.turn-O {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #a2d4ff;
+  cursor: pointer;
+
+  &:hover::before {
+    content: "O";
+    position: absolute;
+  }
+}
