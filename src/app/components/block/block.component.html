@@ -4,7 +4,7 @@
 </div>
 
 <div class="winner" *ngIf="gameCompleted">
-    <p *ngIf="winner==='X' || winner==='O'"><span [ngStyle]="{'color': winner == 'X' ? '#ff1800' : '#0089ff'}">{{ winner
+    <p *ngIf="winner==='X' || winner==='O'"><span [ngClass]="{'player-x': winner == 'X', 'player-o': winner == 'O'}">{{ winner
             }} </span>has won!</p>
     <p *ngIf="winner==='Tied'"> Game Tied </p>
 </div>
@@ -15,7 +15,7 @@
             <button
                 [class]="'cell-input cell-input--'+(cellIndex+(blockIndex*3)) + (blocks[cellIndex+(blockIndex*3)] ? '' : ' turn-'+playerTurn)"
                 (click)="handlePlayerInput(cellIndex+(blockIndex*3))" [disabled]="blocks[cellIndex+(blockIndex*3)]">
-                <span [ngStyle]="{'color': blocks[cellIndex+(blockIndex*3)] == 'X' ? '#ff1800' : '#0089ff'}">
+                <span [ngClass]="{'player-x' :blocks[cellIndex+(blockIndex*3)] == 'X', 'player-o' :blocks[cellIndex+(blockIndex*3)] == 'O'}">
                     {{ blocks[cellIndex + (blockIndex * 3)] }}
                 </span>
             </button>
